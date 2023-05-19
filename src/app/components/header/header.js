@@ -4,6 +4,7 @@ import Logo from './logo'
 import Theme from './theme'
 
 const Header = () => {
+  // test
   return (
     <header className='flex items-center justify-around border-b-2 h-12'>
       <Logo />
