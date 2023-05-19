@@ -29,10 +29,23 @@ const generateAppDirEntry = (entry) => {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  experimental: {
+    serverComponentsExternalPackages: ['mongoose'],
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'res.cloudinary.com',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
   webpack: (config) => {
     const entry = generateAppDirEntry(config.entry)
     config.entry = () => entry
-
+    config.experiments = { ...config.experiments, topLevelAwait: true }
     return config
   },
 }
