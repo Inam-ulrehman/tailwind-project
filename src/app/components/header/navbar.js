@@ -1,7 +1,6 @@
 'use client'
 import Link from 'next/link'
-import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import { useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 
 const navLinks = [
   { title: 'Home', path: '/' },
@@ -10,11 +9,7 @@ const navLinks = [
 ]
 const Navbar = () => {
   const pathname = usePathname()
-  const searchParams = useSearchParams()
 
-  useEffect(() => {
-    console.log(pathname)
-  }, [pathname, searchParams])
   return (
     <nav>
       <ul className='flex gap-1'>
@@ -26,6 +21,7 @@ const Navbar = () => {
                   pathname === item.path ? 'border-b-4 border-b-red-500' : ''
                 }`}
                 href={item.path}
+                aria-label={item.title}
               >
                 {item.title}
               </Link>
